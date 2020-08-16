@@ -4,8 +4,13 @@ import {  StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-nati
 const InputBar =(props) =>{
     return(
         <View style={styles.inputContainer}>
-            <TextInput style={styles.input}/>
-            <TouchableOpacity style={styles.addButton}>
+            <TextInput 
+            style={styles.input}
+            onChangeText={(todoInput)=>props.textChange(todoInput)}
+            value={props.todoInput}
+            
+            />
+            <TouchableOpacity style={styles.addButton} onPress={props.addNewTodo}>
                 <Text style={styles.addButtonText}>ADD</Text>
             </TouchableOpacity>
         </View>
@@ -20,7 +25,7 @@ const styles= StyleSheet.create({
         justifyContent:'space-between',
         shadowOffset:{width:0,height:3},
         shadowColor:'#171717',
-        shadowOpacity:.1
+        shadowOpacity: .1
     },
     input:{
         backgroundColor:'#F3F3F3',
